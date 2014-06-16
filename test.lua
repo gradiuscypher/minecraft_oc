@@ -1,7 +1,16 @@
-function remember_home (w)
-	print("test")
-	print w
-	
+function walk_to_mine ()
 end
 
-remember_home("Fish")
+function walk_to_charger ()
+end
+
+function main ()
+    local count = 1
+
+    while count < 10 do
+        print(count)
+        count = count + 1
+    end
+end
+
+main()
