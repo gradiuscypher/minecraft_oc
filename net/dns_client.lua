@@ -6,14 +6,12 @@ modem = component.modem
 
 function dns_lookup (name)
     modem.open(53)
-    modem.send(server_address, 53, "lookup,"..name..", , ")
+    modem.send(server_address, 53, "lookup,"..name)
     local _,_,from,port,_,message = event.pull("modem_message")
     modem.close(53)
     return message
 end
 
-function dns_register (name, address, pin)
-end
-
-function dns_update (name, address, pin)
+function dns_register (name)
+    modem.send(server_address, 53, "register,"..name)
 end
