@@ -1,5 +1,6 @@
 --DNS client for Minecraft network
-server_address = "9ca3b064-0c83-4c20-845d-8cb282cf560b"
+--server_address = "9ca3b064-0c83-4c20-845d-8cb282cf560b"
+server_address = "0b11c691-56e7-421a-bd79-8f0a8f3cb873"
 component = require("component")
 event = require("event")
 modem = component.modem

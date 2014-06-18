@@ -2,7 +2,7 @@ require("dns_client")
 component = require("component")
 event = require("event")
 modem = component.modem
-modem.open(1337)
+modem.open(22)
 
 io.write("What is the address: ")
 addr = io.read()
@@ -13,5 +13,5 @@ while true do
     command = io.read()
     modem.send(hw_addr, 22, "ssh,"..command)
     local _,_,from,port,_,message = event.pull("modem_message")
-    print("\n"..message)
+    print(message)
 end
