@@ -1,15 +1,10 @@
 require("dns_client")
-require("dns_client")
 component = require("component")
 event = require("event")
 serial = require("serialization")
 modem = component.modem
 
 addr = dns_lookup("market")
-
-
-
-
 
 while true do
     io.write("Action: ")
