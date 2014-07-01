@@ -20,25 +20,25 @@ function handle_input ()
         if users_dict[msg_dict["target"]] == nil then
             users_dict[msg_dict["target"]] = msg_dict["password"]
             save_user_dict(users_dict)
-            return_dict = {["msg"] = "User created successfully", ["status"] = true}
+            return_dict = {["action"] = "create", ["msg"] = "User created successfully", ["status"] = true}
             return_msg = serial.serialize(return_dict)
             modem.send(from, 8080, return_msg)
         else
-            return_dict = {["msg"] = "User creation failed.", ["status"] = false}
+            return_dict = {["action"] = "create", ["msg"] = "User creation failed.", ["status"] = false}
             return_msg = serial.serialize(return_dict)
             modem.send(from, 8080, return_msg)
         end
     elseif msg_dict["action"] == "login" then
         if users_dict[msg_dict["target"]] == nil then
-            return_dict = {["msg"] = "User login failed, user does not exist.", ["status"] = false}
+            return_dict = {["action"] = "login", ["msg"] = "User login failed, user does not exist.", ["status"] = false}
             return_msg = serial.serialize(return_dict)
             modem.send(from, 8080, return_msg)
         elseif users_dict[msg_dict["target"]] ~= msg_dict["password"] then
-            return_dict = {["msg"] = "User login failed, incorrect password.", ["status"] = false}
+            return_dict = {["action"] = "login", ["msg"] = "User login failed, incorrect password.", ["status"] = false}
             return_msg = serial.serialize(return_dict)
             modem.send(from, 8080, return_msg)
         elseif users_dict[msg_dict["target"]] == msg_dict["password"] then
-            return_dict = {["msg"] = "User login successful.", ["status"] = true}
+            return_dict = {["action"] = "login", ["msg"] = "User login successful.", ["status"] = true}
             return_msg = serial.serialize(return_dict)
             modem.send(from, 8080, return_msg)
         end
